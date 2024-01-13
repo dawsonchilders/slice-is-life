@@ -1,6 +1,6 @@
 <%- include('./partials/header') %>
 
-
+<main style="width: 90%; max-width: 800px;">
 <h1>Blog Posts</h1>
 <% if (posts && posts.length > 0) { %>
   <% posts.forEach(post => { %>
@@ -20,5 +20,6 @@
 <% } else { %>
   <p>No posts to display.</p>
 <% } %>
+</main>
 
 <%- include('./partials/footer') %>
