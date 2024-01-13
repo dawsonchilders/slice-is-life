@@ -4,7 +4,7 @@ const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('home', { title: 'SLice Is Life' });
+  res.render('index', { title: 'Slice is Life' });
 });
 
 // Google OAuth login route
@@ -23,7 +23,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/',
+    successRedirect: '/posts/home',
     failureRedirect: '/'
   }
 ));

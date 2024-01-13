@@ -6,9 +6,13 @@
   </head>
   <body>
     <nav>
-      <a href="/">HOME</a>
       <% if (user) { %>
+      <a href="/">HOME</a>
+      |
+      <a href="/posts/new">NEW POST</a>
+      |
       <a href="/logout">LOG OUT</a>
+      |
       <% } else { %>
       <a href="/auth/google" class="login">LOG IN</a>
       <% } %>
