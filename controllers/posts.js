@@ -25,7 +25,7 @@ async function create(req, res) {
   req.body.user = req.user._id;
   try {
     await Post.create(req.body);
-    res.redirect('/');
+    res.redirect('/posts/home');
   } catch (err) {
     res.render('posts/new', { title: 'New Post', error: 'Error creating post' });
   }
@@ -48,5 +48,5 @@ async function update(req, res) {
 
 async function deletePost(req, res) {
   await Post.findOneAndDelete({ _id: req.params.id, user: req.user._id });
-  res.redirect('/');
+  res.redirect('/posts/home');
 }
