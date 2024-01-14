@@ -26,7 +26,7 @@
                   <p>No comments yet.</p>
                 <% } %>
       
-                <form action="/posts/<%= post._id %>/comments" method="POST">
+                <form action="/comments/posts/<%= post._id %>/comments" method="POST">
                   <textarea name="content" placeholder="Add a comment..."></textarea>
                   <button type="submit">Post Comment</button>
                 </form>

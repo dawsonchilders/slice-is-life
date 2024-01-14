@@ -1,5 +1,4 @@
 const Post = require('../models/post');
-//const Comment = require('../models/comment');
 
 module.exports = {
   index,
@@ -15,8 +14,7 @@ async function index(req, res) {
     const posts = await Post.find({}).populate('comments').exec();
     res.render('home', { title: 'Blog Posts', posts });
   } catch (err) {
-    console.error("Error in index function:", err);
-    res.status(500).send('Internal Server Error');
+    console.log(err);
   }
 }
 

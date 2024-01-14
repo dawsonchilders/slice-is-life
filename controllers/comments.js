@@ -9,8 +9,9 @@ async function create(req, res) {
   req.body.post = req.params.id;
   try {
     await Comment.create(req.body);
-    res.redirect('/posts/home' + req.params.id);
+    res.redirect('/posts/home');
   } catch (err) {
+    console.log(err)
   }
 }
 
