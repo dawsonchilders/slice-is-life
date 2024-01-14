@@ -16,10 +16,11 @@ const postSchema = new Schema({
     required: true
   },
   userName: String,
-  userAvatar: String
+  userAvatar: String,
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
   
 }, {
-  timestamps: true
+  timestamps: true,
 });
 
 module.exports = mongoose.model('Post', postSchema);

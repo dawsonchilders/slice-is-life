@@ -1,25 +1,41 @@
 <%- include('./partials/header') %>
 
 <main style="width: 90%; max-width: 800px;">
-<h1>Blog Posts</h1>
-<% if (posts && posts.length > 0) { %>
-  <% posts.forEach(post => { %>
-    <div class="post">
-      <h2><%= post.title %></h2>
-      <p><%= post.content %></p>
-
-      <a href="/posts/<%= post.id %>/edit">Edit</a>
-
-      <% if (user && user._id.toString() === post.user.toString()) { %>
-      <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
-      <button type="submit">DELETE</button>
-      </form>
-      <% } %>
-    </div>
-  <% }) %>
-<% } else { %>
-  <p>No posts to display.</p>
-<% } %>
+  <h1>Blog Posts</h1>
+  <% if (posts && posts.length > 0) { %>
+      <% posts.forEach(post => { %>
+          <div class="post">
+              <h2><%= post.title %></h2>
+              <p><%= post.content %></p>
+              <% if (user && user._id.toString() === post.user.toString()) { %>
+                <button>
+                  <a href="/posts/<%= post.id %>/edit">Edit</a>
+                </button>
+                  <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
+                      <button type="submit">DELETE</button>
+                  </form>
+              <% } %>
+              <div class="comments">
+                <% if (post.comments && post.comments.length > 0) { %>
+                  <% post.comments.forEach(comment => { %>
+                    <div class="comment">
+                      <p><%= comment.content %></p>
+                    </div>
+                  <% }) %>
+                <% } else { %>
+                  <p>No comments yet.</p>
+                <% } %>
+      
+                <form action="/posts/<%= post._id %>/comments" method="POST">
+                  <textarea name="content" placeholder="Add a comment..."></textarea>
+                  <button type="submit">Post Comment</button>
+                </form>
+              </div>
+          </div>
+      <% }) %>
+  <% } else { %>
+      <p>No posts to display.</p>
+  <% } %>
 </main>
 
 <%- include('./partials/footer') %>
