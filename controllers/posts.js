@@ -24,6 +24,8 @@ function newPost(req, res) {
 
 async function create(req, res) {
   req.body.user = req.user._id;
+  req.body.userName = req.user.name;
+  req.body.userAvatar = req.user.avatar;
   try {
     await Post.create(req.body);
     res.redirect('/posts/home');
@@ -34,7 +36,7 @@ async function create(req, res) {
 
 async function edit(req, res) {
   const post = await Post.findById(req.params.id);
-  if (!post.user.equals(req.user._id)) return res.redirect('/');
+  if (!post.user.equals(req.user._id)) return res.redirect('/posts');
   res.render('posts/edit', { title: 'Edit Post', post });
 }
 
@@ -44,7 +46,7 @@ async function update(req, res) {
     req.body,
     { new: true }
   );
-  res.redirect('/');
+  res.redirect('/posts/home');
 }
 
 async function deletePost(req, res) {
