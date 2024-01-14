@@ -8,10 +8,12 @@
               <h2><%= post.title %></h2>
               <p><%= post.content %></p>
               <% if (user && user._id.toString() === post.user.toString()) { %>
-                <a href="/posts/<%= post.id %>/edit" class="button">Edit</a>
+              <div class="post-actions">
                 <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
-                    <button type="submit" class="button">DELETE</button>
+                  <button type="submit" class="button">DELETE</button>
                 </form>
+                <a href="/posts/<%= post.id %>/edit" class="button">Edit</a>
+              </div>
               <% } %>
               <div class="comments">
                 <% if (post.comments && post.comments.length > 0) { %>
