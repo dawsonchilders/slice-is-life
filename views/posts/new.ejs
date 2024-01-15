@@ -1,10 +1,10 @@
 <%- include('../partials/header') %>
 
 <form class="new-post" action="/posts" method="POST">
-  <label for="title">Title:</label>
-  <input type="text" name="title" required>
-  <label for="content">Content:</label>
-  <textarea name="content" required></textarea>
+  <label for="title"></label>
+  <input placeholder="Post Title" type="text" name="title" required>
+  <label for="content"></label>
+  <textarea placeholder="Type Your Post Here" name="content" required></textarea>
   <button type="submit">Create Post</button>
 </form>
 

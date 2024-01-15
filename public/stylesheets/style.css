@@ -10,10 +10,28 @@ body {
   align-items: center;
 }
 
+body > main {
+  background-color: #121212;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  width: 100%;
+  max-width: 800px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 nav {
   background-color: #1c1c1c;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px 0 30px;
   width: 100%;
-  padding: 10px 0;
+  padding: 20px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
 }
 
@@ -21,7 +39,11 @@ nav a {
   color: #fff;
   margin: 0 20px;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
+}
+
+nav a:hover {
+  color: #4caf50;
 }
 
 nav a.login {
@@ -63,7 +85,7 @@ nav a.login {
 }
 
 textarea {
-  width: 100%;
+  width: 96%;
   background-color: #333;
   color: #fff;
   border: 1px solid #444;
@@ -72,9 +94,8 @@ textarea {
   margin-top: 10px;
 }
 
-.button {
-  background-color: #4CAF50; /* Green background */
-  border: none;
+button, .button {
+  background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
   text-align: center;
@@ -86,8 +107,8 @@ textarea {
   border-radius: 4px;
 }
 
-.button:hover {
-  background-color: #45a049; /* Darker green on hover */
+button:hover, .button:hover {
+  background-color: #45a049;
 }
 
 .post-actions {
@@ -98,7 +119,7 @@ textarea {
 
 .post-actions form,
 .post-actions a {
-  margin-right: 10px; /* Adjust spacing between buttons */
+  margin-right: 10px;
 }
 
 .new-post {
@@ -107,7 +128,7 @@ textarea {
 }
 
 input [type=button] {
-  background-color: #4CAF50; /* Green background */
+  background-color: #4CAF50;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -118,4 +139,9 @@ input [type=button] {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 4px;
+}
+
+.login img {
+  height: 35px;
+  padding-left: 10px;
 }
