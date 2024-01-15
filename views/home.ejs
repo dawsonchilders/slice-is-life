@@ -5,6 +5,10 @@
   <% if (posts && posts.length > 0) { %>
       <% posts.forEach(post => { %>
           <div class="post">
+            <% if (post.user) { %>
+              <img class="avatar" src="<%= post.userAvatar %>" alt="Avatar">
+              <p class="avatar-name">Posted by <%= post.userName %></p>
+          <% } %>            
               <h2><%= post.title %></h2>
               <p><%= post.content %></p>
               <% if (user && user._id.toString() === post.user.toString()) { %>
@@ -19,7 +23,11 @@
                 <% if (post.comments && post.comments.length > 0) { %>
                   <% post.comments.forEach(comment => { %>
                     <div class="comment">
-                      <p><%= comment.content %></p>
+                      <div class="comment">
+                        <% if (comment.user) { %>
+                            <img class="avatar" src="<%= comment.userAvatar %>" alt="Avatar">
+                            <p class="avatar-name"><%= comment.userName %> : <%= comment.content %></p>
+                        <% } %>  
                       <% if (user && user._id.toString() === comment.user.toString()) { %>
                         <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
                           <button type="submit">Delete Comment</button>

@@ -145,3 +145,13 @@ input [type=button] {
   height: 35px;
   padding-left: 10px;
 }
+
+.avatar {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+
+.avatar-name {
+  font-size: 15px;
+}
