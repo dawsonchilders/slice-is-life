@@ -20,6 +20,11 @@
                   <% post.comments.forEach(comment => { %>
                     <div class="comment">
                       <p><%= comment.content %></p>
+                      <% if (user && user._id.toString() === comment.user.toString()) { %>
+                        <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                          <button type="submit">Delete Comment</button>
+                        </form>
+                      <% } %>
                     </div>
                   <% }) %>
                 <% } else { %>

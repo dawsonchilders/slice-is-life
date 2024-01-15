@@ -53,3 +53,4 @@ async function deletePost(req, res) {
   await Post.findOneAndDelete({ _id: req.params.id, user: req.user._id });
   res.redirect('/posts/home');
 }
+
