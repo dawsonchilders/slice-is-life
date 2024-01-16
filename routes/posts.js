@@ -9,5 +9,10 @@ router.post('/', ensureLoggedIn, postsCtrl.create);
 router.get('/:id/edit', ensureLoggedIn, postsCtrl.edit);
 router.put('/:id', ensureLoggedIn, postsCtrl.update);
 router.delete('/:id', ensureLoggedIn, postsCtrl.delete);
+// POST (/:id/like) for a user to like a post
+router.post('/:id/like', ensureLoggedIn, postsCtrl.like);
+// POST (/:id/unlike) for a user to unlike a post they have liked
+router.post('/:id/unlike', ensureLoggedIn, postsCtrl.unlike);
+
 
 module.exports = router;

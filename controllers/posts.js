@@ -6,7 +6,9 @@ module.exports = {
   create,
   edit,
   update,
-  delete: deletePost
+  delete: deletePost,
+  like,
+  unlike,
 };
 
 async function index(req, res) {
@@ -54,3 +56,20 @@ async function deletePost(req, res) {
   res.redirect('/posts/home');
 }
 
+async function like(req, res) {
+  try {
+    await Post.findByIdAndUpdate(req.params.id, { $addToSet: { likes: req.user._id } });
+    res.redirect('back');
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function unlike(req, res) {
+  try {
+    await Post.findByIdAndUpdate(req.params.id, { $pull: { likes: req.user._id } });
+    res.redirect('back');
+  } catch (err) {
+    console.log(err);
+  }
+}

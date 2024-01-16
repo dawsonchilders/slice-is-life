@@ -18,6 +18,18 @@
                 </form>
                 <a href="/posts/<%= post.id %>/edit" class="button">Edit</a>
               </div>
+              <div>
+                <p><%= post.likes.length %> likes</p>
+                <% if (post.likes.includes(user._id)) { %>
+                  <form action="/posts/<% post._id %>/unlike" method="POST">
+                    <button type="=submit">Unlike</button>
+                  </form>
+                  <% } else { %>
+                    <form action="/posts/<%= post._id %>/like" method="POST">
+                      <button type="submit">Like</button>
+                    </form>
+                    <% } %>
+              </div>
               <% } %>
               <div class="comments">
                 <% if (post.comments && post.comments.length > 0) { %>
