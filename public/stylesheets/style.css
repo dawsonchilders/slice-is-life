@@ -155,3 +155,9 @@ input [type=button] {
 .avatar-name {
   font-size: 15px;
 }
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

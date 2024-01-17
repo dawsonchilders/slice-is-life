@@ -14,7 +14,7 @@
               <% if (user && user._id.toString() === post.user.toString()) { %>
               <div class="post-actions">
                 <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
-                  <button type="submit" class="button">DELETE</button>
+                  <button type="submit" class="button">Delete</button>
                 </form>
                 <a href="/posts/<%= post.id %>/edit" class="button">Edit</a>
               </div>
@@ -22,11 +22,11 @@
                 <p><%= post.likes.length %> likes</p>
                 <% if (post.likes.includes(user._id)) { %>
                   <form action="/posts/<%= post._id %>/unlike" method="POST">
-                    <button type="=submit">Unlike</button>
+                    <button type="=submit" class="button">Unlike</button>
                   </form>
                   <% } else { %>
                     <form action="/posts/<%= post._id %>/like" method="POST">
-                      <button type="submit">Like</button>
+                      <button type="submit" class="button">Like</button>
                     </form>
                     <% } %>
               </div>
@@ -40,6 +40,7 @@
                             <img class="avatar" src="<%= comment.userAvatar %>" alt="Avatar">
                             <p class="avatar-name"><%= comment.userName %> : <%= comment.content %></p>
                         <% } %>
+                        <div class="comment-actions">
                         <p><%= comment.likes.length %> Likes</p>
                         <% if (comment.likes.includes(user._id)) { %>
                           <form action="/comments/<%= comment._id %>/unlike" method="POST">
@@ -52,9 +53,10 @@
                             <% } %>  
                       <% if (user && user._id.toString() === comment.user.toString()) { %>
                         <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                          <button type="submit">Delete Comment</button>
+                          <button type="submit">Delete</button>
                         </form>
                       <% } %>
+                    </div>
                     </div>
                   <% }) %>
                 <% } else { %>
