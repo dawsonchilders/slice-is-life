@@ -12,12 +12,8 @@ module.exports = {
 };
 
 async function index(req, res) {
-  try {
     const posts = await Post.find({}).sort('-createdAt').populate('comments').exec();
     res.render('home', { title: 'Blog Posts', posts });
-  } catch (err) {
-    console.log(err);
-  }
 }
 
 function newPost(req, res) {

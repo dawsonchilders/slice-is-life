@@ -15,6 +15,9 @@ const postSchema = new Schema({
     ref: 'User',
     required: true
   },
+  image: {
+    type: String,
+  },
   userName: String,
   userAvatar: String,
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
