@@ -4,6 +4,8 @@ const Comment = require('../models/comment');
 module.exports = {
   create,
   deleteComment,
+  like,
+  unlike,
 };
 
 
@@ -34,7 +36,24 @@ async function deleteComment(req, res) {
       res.status(401).send('Unauthorized');
     }
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
+async function like(req, res) {
+try {
+  await Comment.findByIdAndUpdate(req.params.commentId, { $addToSet: { likes: req.user._id } });
+  res.redirect('back');
+  } catch (err) {
+  console.log(err);
+}
+}
+
+async function unlike(req, res) {
+  try {
+    await Comment.findByIdAndUpdate(req.params.commentId, { $pull: { likes: req.user._id } });
+    res.redirect('back');
+  } catch (err) {
+    console.log(err);
+  }
+}

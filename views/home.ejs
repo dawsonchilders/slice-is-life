@@ -39,7 +39,17 @@
                         <% if (comment.user) { %>
                             <img class="avatar" src="<%= comment.userAvatar %>" alt="Avatar">
                             <p class="avatar-name"><%= comment.userName %> : <%= comment.content %></p>
-                        <% } %>  
+                        <% } %>
+                        <p><%= comment.likes.length %> Likes</p>
+                        <% if (comment.likes.includes(user._id)) { %>
+                          <form action="/comments/<%= comment._id %>/unlike" method="POST">
+                          <button type="submit">Unlike</button>
+                          </form>
+                          <% } else { %>
+                            <form action="/comments/<%= comment._id %>/like" method="POST">
+                              <button type="submit">Like</button>
+                            </form>
+                            <% } %>  
                       <% if (user && user._id.toString() === comment.user.toString()) { %>
                         <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
                           <button type="submit">Delete Comment</button>

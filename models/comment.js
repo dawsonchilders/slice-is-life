@@ -13,6 +13,7 @@ const commentSchema = new Schema({
   },
   userName: String,
   userAvatar: String,
+  likes: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   post: {
     type: Schema.Types.ObjectId,
     ref: 'Post',

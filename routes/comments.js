@@ -6,5 +6,9 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 router.post('/posts/:id/comments', ensureLoggedIn, commentsCtrl.create);
 router.delete('/:commentId', ensureLoggedIn, commentsCtrl.deleteComment);
 
+// POST (/:commentId/like) for a user to like a comment
+router.post('/:commentId/like', ensureLoggedIn, commentsCtrl.like);
+// POST (/:commentId/unlike) for a user to unlike a comment they have liked
+router.post('/:commentId/unlike', ensureLoggedIn, commentsCtrl.unlike);
 
 module.exports = router;
