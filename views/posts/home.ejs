@@ -21,6 +21,7 @@
       </form>
       <a href="/posts/<%= post.id %>/edit" class="button">Edit</a>
     </div>
+    <% } %>
     <div>
       <p><%= post.likes.length %> likes</p>
       <% if (post.likes.includes(user._id)) { %>
@@ -33,7 +34,6 @@
       </form>
       <% } %>
     </div>
-    <% } %>
     <div class="comments">
       <% if (post.comments && post.comments.length > 0) { %>
       <% post.comments.forEach(function(comment) { %>
