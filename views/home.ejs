@@ -3,7 +3,7 @@
 <main>
   <h1>Blog Posts</h1>
   <% if (posts && posts.length > 0) { %>
-  <% posts.forEach(post => { %>
+  <% posts.forEach(function(post) { %>
   <div class="post">
     <% if (post.user) { %>
     <img class="avatar" src="<%= post.userAvatar %>" alt="Avatar">
@@ -14,7 +14,7 @@
     <img src="<%= post.image %>" alt="Post Image" class="post-image">
 <% } %>
     <p><%= post.content %></p>
-    <% if (user && user._id.toString() === post.user.toString()) { %>
+    <% if (user?._id.equals(post.user)) { %>
     <div class="post-actions">
       <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
         <button type="submit" class="button">Delete</button>
@@ -27,16 +27,16 @@
       <form action="/posts/<%= post._id %>/unlike" method="POST">
         <button type="=submit" class="button">Unlike</button>
     </form>
-<% } else { %>
+  <% } else { %>
       <form action="/posts/<%= post._id %>/like" method="POST">
         <button type="submit" class="button">Like</button>
     </form>
-<% } %>
+    <% } %>
   </div>
 <% } %>
     <div class="comments">
     <% if (post.comments && post.comments.length > 0) { %>
-    <% post.comments.forEach(comment => { %>
+    <% post.comments.forEach(function(comment) { %>
       
        <div class="comment">
        <% if (comment.user) { %>
@@ -53,9 +53,9 @@
            <form action="/comments/<%= comment._id %>/like" method="POST">
              <button type="submit">Like</button>
          </form>
-     <% } %>  
-         <% if (user && user._id.toString() === comment.user.toString()) { %>
-           <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+     <% } %>
+         <% if (user?._id.equals(comment.user)) { %>   
+        <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
              <button type="submit">Delete</button>
          </form>
       <% } %>

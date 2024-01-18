@@ -172,3 +172,13 @@ input [type=button] {
   display: block;
   margin: 0 auto;
 }
+
+.landing-page {
+  width: 80%; /* Adjust as needed */
+  max-width: 800px; /* Max width of the photo */
+  height: 50vh; /* Adjust the height of the main element */
+  background: url('/images/landing_page.png') no-repeat center center;
+  background-size: cover; /* Adjust this as needed */
+  margin: 20px 0; /* Space above and below the main element */
+  border: 10px solid #45a049; /* Border around the photo */
+}
