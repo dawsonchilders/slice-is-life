@@ -28,24 +28,16 @@ async function deleteComment(req, res) {
     if (comment.user.equals(req.user._id)) {
       await Post.findByIdAndUpdate(comment.post, { $pull: { comments: comment._id } });
       await Comment.findByIdAndDelete(req.params.commentId);
-      res.redirect('back');
+      res.redirect('/posts/home');
   }
 }
 
 async function like(req, res) {
-try {
   await Comment.findByIdAndUpdate(req.params.commentId, { $addToSet: { likes: req.user._id } });
-  res.redirect('back');
-  } catch (err) {
-  console.log(err);
- }
+  res.redirect('/posts/home');
 }
 
 async function unlike(req, res) {
-  try {
     await Comment.findByIdAndUpdate(req.params.commentId, { $pull: { likes: req.user._id } });
-    res.redirect('back');
-  } catch (err) {
-    console.log(err);
-  }
+    res.redirect('/posts/home');
 }

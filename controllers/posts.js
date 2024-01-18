@@ -53,19 +53,11 @@ async function deletePost(req, res) {
 }
 
 async function like(req, res) {
-  try {
     await Post.findByIdAndUpdate(req.params.id, { $addToSet: { likes: req.user._id } });
-    res.redirect('back');
-  } catch (err) {
-    console.log(err);
-  }
+    res.redirect('/posts/home');
 }
 
 async function unlike(req, res) {
-  try {
     await Post.findByIdAndUpdate(req.params.id, { $pull: { likes: req.user._id } });
-    res.redirect('back');
-  } catch (err) {
-    console.log(err);
-  }
+    res.redirect('/posts/home');
 }
