@@ -1,6 +1,6 @@
-<%- include('./partials/header') %>
+<%- include('../partials/header') %>
 
-<main>
+
   <h1>Blog Posts</h1>
   <% if (posts && posts.length > 0) { %>
   <% posts.forEach(function(post) { %>
@@ -75,6 +75,6 @@
   <% } else { %>
   <p>No posts to display</p>
   <% } %>
-</main>
 
-<%- include('./partials/footer') %>
+
+<%- include('../partials/footer') %>

@@ -1,8 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
-
 body {
   background-color: #121212;
   color: #fff;
@@ -174,11 +169,11 @@ input [type=button] {
 }
 
 .landing-page {
-  width: 80%; /* Adjust as needed */
-  max-width: 800px; /* Max width of the photo */
-  height: 50vh; /* Adjust the height of the main element */
+  width: 80%; 
+  max-width: 800px; 
+  height: 50vh; 
   background: url('/images/landing_page.png') no-repeat center center;
-  background-size: cover; /* Adjust this as needed */
-  margin: 20px 0; /* Space above and below the main element */
-  border: 10px solid #45a049; /* Border around the photo */
+  background-size: cover; 
+  margin: 20px 0; 
+  border: 10px solid #45a049; 
 }

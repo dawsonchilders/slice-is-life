@@ -13,7 +13,7 @@ module.exports = {
 
 async function index(req, res) {
     const posts = await Post.find({}).sort('-createdAt').populate('comments').exec();
-    res.render('home', { title: 'Blog Posts', posts });
+    res.render('posts/home', { title: 'Blog Posts', posts });
 }
 
 function newPost(req, res) {
@@ -21,6 +21,9 @@ function newPost(req, res) {
 }
 
 async function create(req, res) {
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key];
+  }
   req.body.user = req.user._id;
   req.body.userName = req.user.name;
   req.body.userAvatar = req.user.avatar;
@@ -44,11 +47,13 @@ async function update(req, res) {
     req.body,
     { new: true }
   );
+  if (!post.user.equals(req.user._id)) return res.redirect('/posts/home');
   res.redirect('/posts/home');
 }
 
 async function deletePost(req, res) {
-  await Post.findOneAndDelete({ _id: req.params.id, user: req.user._id });
+  const post = await Post.findOneAndDelete({ _id: req.params.id, user: req.user._id });
+  if (!post.user.equals(req.user._id)) return res.redirect('/posts/home');
   res.redirect('/posts/home');
 }
 
