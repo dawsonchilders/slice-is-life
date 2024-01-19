@@ -182,6 +182,10 @@ nav a.login {
   border-bottom: none;
 }
 
+.comment p {
+  font-size: 17px;
+}
+
 textarea {
   width: 96%;
   background-color: #222;
