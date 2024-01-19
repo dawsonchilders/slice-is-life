@@ -12,13 +12,13 @@ router.get('/new', ensureLoggedIn, postsCtrl.new);
 router.post('/', ensureLoggedIn, postsCtrl.create);
 // GET (/:id/edit)
 router.get('/:id/edit', ensureLoggedIn, postsCtrl.edit);
-// PUT (/:id) for a user to edit their post
+// PUT (/:id)
 router.put('/:id', ensureLoggedIn, postsCtrl.update);
-// DELETE (/:id) for a user to delete a post
+// DELETE (/:id)
 router.delete('/:id', ensureLoggedIn, postsCtrl.delete);
-// POST (/:id/like) for a user to like a post
+// POST (/:id/like)
 router.post('/:id/like', ensureLoggedIn, postsCtrl.like);
-// POST (/:id/unlike) for a user to unlike a post they have liked
+// POST (/:id/unlike)
 router.post('/:id/unlike', ensureLoggedIn, postsCtrl.unlike);
 
 module.exports = router;

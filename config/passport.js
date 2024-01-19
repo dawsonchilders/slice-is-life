@@ -8,8 +8,8 @@ passport.use(new GoogleStrategy(
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK
   },
-  
-  async function(accessToken, refreshToken, profile, cb) {
+
+  async function (accessToken, refreshToken, profile, cb) {
     try {
       let user = await User.findOne({ googleId: profile.id });
       if (user) return cb(null, user);
@@ -26,10 +26,10 @@ passport.use(new GoogleStrategy(
   }
 ));
 
-passport.serializeUser(function(user, cb) {
+passport.serializeUser(function (user, cb) {
   cb(null, user._id);
 });
 
-passport.deserializeUser(async function(userId, cb) {
+passport.deserializeUser(async function (userId, cb) {
   cb(null, await User.findById(userId));
 });

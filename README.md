@@ -2,6 +2,11 @@
 Slice is Life is a blog for people who love pizza! You can share photos, talk about your favorite pizza places, Comment on each other's posts, show your love by "liking" each other's posts and comments, and engage with each other in all things: PIZZA!
 
 # Screen Shots:
+![](public/images/home_page.jpeg)
+![](public/images/blog.jpeg)
+![](public/images/new_post.jpeg)
+![](public/images/edit_post.jpeg)
+
 
 
 
