@@ -22,6 +22,102 @@ body > main {
   align-items: center;
 }
 
+.new-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  padding: 20px;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background-color: #333;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.new-post input[type="text"], .new-post textarea {
+  width: 100%; 
+  padding: 10px;
+  margin-top: 5px; 
+  border: 1px solid #555; 
+  border-radius: 4px;
+  background-color: #222; 
+  color: #fff;
+}
+
+.new-post button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.new-post button:hover {
+  background-color: #45a049;
+}
+
+.edit-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  padding: 20px;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background-color: #333;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.edit-post input[type="text"], .edit-post textarea {
+  width: 100%; 
+  padding: 10px;
+  margin-top: 5px; 
+  border: 1px solid #555; 
+  border-radius: 4px;
+  background-color: #222; 
+  color: #fff;
+}
+
+.edit-post button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-post button:hover {
+  background-color: #45a049;
+}
+
+.delete-post button,
+.like-post button,
+.unlike-post button,
+.post-comment button {
+  margin-top: 4px;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover, .button:hover {
+  background-color: #45a049;
+}
 
 nav {
   background-color: #1c1c1c;
@@ -85,7 +181,7 @@ nav a.login {
 
 textarea {
   width: 96%;
-  background-color: #333;
+  background-color: #222;
   color: #fff;
   border: 1px solid #444;
   border-radius: 4px;
@@ -93,7 +189,19 @@ textarea {
   margin-top: 10px;
 }
 
-button, .button {
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.button {
   background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
@@ -103,11 +211,7 @@ button, .button {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 20px;
-}
-
-button:hover, .button:hover {
-  background-color: #45a049;
+  border-radius: 4px;
 }
 
 .post-actions {
@@ -123,21 +227,6 @@ button:hover, .button:hover {
 
 .new-post {
   margin-top: 20px;
-
-}
-
-input [type=button] {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
 }
 
 .login img {
@@ -169,11 +258,35 @@ input [type=button] {
 }
 
 .landing-page {
-  width: 80%; 
-  max-width: 800px; 
-  height: 50vh; 
-  background: url('/images/landing_page.png') no-repeat center center;
-  background-size: cover; 
-  margin: 20px 0; 
-  border: 10px solid #45a049; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; 
+  width: 100%;
+}
+
+.landing-img {
+  max-width: 100%; 
+  height: auto; 
+  margin: 20px 0;
+  padding-bottom: 100px;
+}
+
+.home-title {
+  font-size: 100px;
+  margin: 15px 0;
+  color: #4CAF50;
+  padding-bottom: 40px;
+}
+
+.home-info {
+  margin: 15px 0;
+}
+
+.blog-title,
+.new-title,
+.edit-title {
+  color: #4CAF50;
+  font-size: 50px;
 }

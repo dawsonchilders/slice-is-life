@@ -3,7 +3,7 @@ const router = express.Router();
 const postsCtrl = require('../controllers/posts');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
-
+// All paths start with "/"
 
 router.get('/home', ensureLoggedIn, postsCtrl.index);
 // GET (/new) 

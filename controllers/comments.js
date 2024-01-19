@@ -23,12 +23,11 @@ async function create(req, res) {
 }
 
 async function deleteComment(req, res) {
-    const comment = await Comment.findById(req.params.commentId);
-    if (comment.user.equals(req.user._id)) {
-      await Post.findByIdAndUpdate(comment.post, { $pull: { comments: comment._id } });
-      await Comment.findByIdAndDelete(req.params.commentId);
-      res.redirect('/posts/home');
+  const comment = await Comment.findOneAndDelete({ _id: req.params.commentId, user: req.user._id });
+  if (comment) {
+    await Post.findByIdAndUpdate(comment.post, { $pull: { comments: comment._id } });
   }
+  res.redirect('/posts/home');
 }
 
 async function like(req, res) {
@@ -37,6 +36,6 @@ async function like(req, res) {
 }
 
 async function unlike(req, res) {
-    await Comment.findByIdAndUpdate(req.params.commentId, { $pull: { likes: req.user._id } });
-    res.redirect('/posts/home');
+  await Comment.findByIdAndUpdate(req.params.commentId, { $pull: { likes: req.user._id } });
+  res.redirect('/posts/home');
 }

@@ -12,8 +12,8 @@ module.exports = {
 };
 
 async function index(req, res) {
-    const posts = await Post.find({}).sort('-createdAt').populate('comments').exec();
-    res.render('posts/home', { title: 'Blog Posts', posts });
+  const posts = await Post.find({}).sort('-createdAt').populate('comments').exec();
+  res.render('posts/home', { title: 'Blog Posts', posts });
 }
 
 function newPost(req, res) {
@@ -52,17 +52,16 @@ async function update(req, res) {
 }
 
 async function deletePost(req, res) {
-  const post = await Post.findOneAndDelete({ _id: req.params.id, user: req.user._id });
-  if (!post.user.equals(req.user._id)) return res.redirect('/posts/home');
+  await Post.findOneAndDelete({ _id: req.params.id, user: req.user._id });
   res.redirect('/posts/home');
 }
 
 async function like(req, res) {
-    await Post.findByIdAndUpdate(req.params.id, { $addToSet: { likes: req.user._id } });
-    res.redirect('/posts/home');
+  await Post.findByIdAndUpdate(req.params.id, { $addToSet: { likes: req.user._id } });
+  res.redirect('/posts/home');
 }
 
 async function unlike(req, res) {
-    await Post.findByIdAndUpdate(req.params.id, { $pull: { likes: req.user._id } });
-    res.redirect('/posts/home');
+  await Post.findByIdAndUpdate(req.params.id, { $pull: { likes: req.user._id } });
+  res.redirect('/posts/home');
 }

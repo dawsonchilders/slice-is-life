@@ -1,12 +1,14 @@
 <%- include('../partials/header') %>
 
+<h1 class="new-title">NEW POST</h1>
+
 <form class="new-post" action="/posts" method="POST">
   <label for="title"></label>
   <input placeholder="Post Title" type="text" name="title" required>
-  <label>Add an Image</label>
+  <label></label>
   <input type="text" name="image" placeholder="Image URL">
   <label for="content"></label>
-  <textarea placeholder="Type Your Post Here" name="content" required>
+  <textarea placeholder="Type Your Post Here" name="content" rows="10" cols="50" required>
   </textarea>
   <button type="submit">Post</button>
 </form>

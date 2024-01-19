@@ -1,80 +1,80 @@
 <%- include('../partials/header') %>
 
 
-  <h1>Blog Posts</h1>
-  <% if (posts && posts.length > 0) { %>
-  <% posts.forEach(function(post) { %>
-  <div class="post">
-    <% if (post.user) { %>
-    <img class="avatar" src="<%= post.userAvatar %>" alt="Avatar">
-    <p class="avatar-name">Posted by <%= post.userName %></p>
-    <% } %>
-    <h2><%= post.title %></h2>
-    <% if (post.image) { %>
-    <img src="<%= post.image %>" alt="Post Image" class="post-image">
-    <% } %>
-    <p><%= post.content %></p>
-    <% if (user?._id.equals(post.user)) { %>
-    <div class="post-actions">
-      <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
-        <button type="submit" class="button">Delete</button>
-      </form>
-      <a href="/posts/<%= post.id %>/edit" class="button">Edit</a>
-    </div>
-    <% } %>
-    <div>
-      <p><%= post.likes.length %> likes</p>
-      <% if (post.likes.includes(user._id)) { %>
-      <form action="/posts/<%= post._id %>/unlike" method="POST">
-        <button type="=submit" class="button">Unlike</button>
-      </form>
-      <% } else { %>
-      <form action="/posts/<%= post._id %>/like" method="POST">
-        <button type="submit" class="button">Like</button>
-      </form>
-      <% } %>
-    </div>
-    <div class="comments">
-      <% if (post.comments && post.comments.length > 0) { %>
-      <% post.comments.forEach(function(comment) { %>
-
-      <div class="comment">
-        <% if (comment.user) { %>
-        <img class="avatar" src="<%= comment.userAvatar %>" alt="Avatar">
-        <p class="avatar-name"><%= comment.userName %> : <%= comment.content %></p>
-        <% } %>
-        <div class="comment-actions">
-          <p><%= comment.likes.length %> Likes</p>
-          <% if (comment.likes.includes(user._id)) { %>
-          <form action="/comments/<%= comment._id %>/unlike" method="POST">
-            <button type="submit">Unlike</button>
-          </form>
-          <% } else { %>
-          <form action="/comments/<%= comment._id %>/like" method="POST">
-            <button type="submit">Like</button>
-          </form>
-          <% } %>
-          <% if (user?._id.equals(comment.user)) { %>
-          <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-            <button type="submit">Delete</button>
-          </form>
-          <% } %>
-        </div>
-      </div>
-      <% }) %>
-      <% } else { %>
-      <p>No comments yet</p>
-      <% } %>
-      <form action="/comments/posts/<%= post._id %>/comments" method="POST">
-        <textarea name="content" placeholder="Add a comment..."></textarea>
-        <button type="submit">Post Comment</button>
-      </form>
-    </div>
-  </div>
-  <% }) %>
-  <% } else { %>
-  <p>No posts to display</p>
+<h1 class="blog-title">BLOG POSTS</h1>
+<% if (posts && posts.length > 0) { %>
+<% posts.forEach(function(post) { %>
+<div class="post">
+  <% if (post.user) { %>
+  <img class="avatar" src="<%= post.userAvatar %>" alt="Avatar">
+  <p class="avatar-name">Posted by <%= post.userName %></p>
   <% } %>
+  <h2><%= post.title %></h2>
+  <% if (post.image) { %>
+  <img src="<%= post.image %>" alt="Post Image" class="post-image">
+  <% } %>
+  <p><%= post.content %></p>
+  <% if (user?._id.equals(post.user)) { %>
+  <div class="post-actions">
+    <form class="delete-post" action="/posts/<%= post.id %>?_method=DELETE" method="POST">
+      <button type="submit" class="button">Delete</button>
+    </form>
+    <a href="/posts/<%= post.id %>/edit" class="button">Edit</a>
+  </div>
+  <% } %>
+  <div>
+    <p><%= post.likes.length %> likes</p>
+    <% if (post.likes.includes(user._id)) { %>
+    <form class="unlike-post" action="/posts/<%= post._id %>/unlike" method="POST">
+      <button type="=submit">Unlike</button>
+    </form>
+    <% } else { %>
+    <form class="like-post" action="/posts/<%= post._id %>/like" method="POST">
+      <button type="submit" class="button">Like</button>
+    </form>
+    <% } %>
+  </div>
+  <div class="comments">
+    <% if (post.comments && post.comments.length > 0) { %>
+    <% post.comments.forEach(function(comment) { %>
+
+    <div class="comment">
+      <% if (comment.user) { %>
+      <img class="avatar" src="<%= comment.userAvatar %>" alt="Avatar">
+      <p class="avatar-name"><%= comment.userName %> : <%= comment.content %></p>
+      <% } %>
+      <div class="comment-actions">
+        <p><%= comment.likes.length %> Likes</p>
+        <% if (comment.likes.includes(user._id)) { %>
+        <form class="unlike-comment" action="/comments/<%= comment._id %>/unlike" method="POST">
+          <button type="submit">Unlike</button>
+        </form>
+        <% } else { %>
+        <form class="like-comment" action="/comments/<%= comment._id %>/like" method="POST">
+          <button type="submit">Like</button>
+        </form>
+        <% } %>
+        <% if (user?._id.equals(comment.user)) { %>
+        <form class="delete-comment" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+        <% } %>
+      </div>
+    </div>
+    <% }) %>
+    <% } else { %>
+    <p>No comments yet</p>
+    <% } %>
+    <form class="post-comment" action="/comments/posts/<%= post._id %>/comments" method="POST">
+      <textarea name="content" placeholder="Add a comment..."></textarea>
+      <button type="submit">Post Comment</button>
+    </form>
+  </div>
+</div>
+<% }) %>
+<% } else { %>
+<p>No posts to display</p>
+<% } %>
 
 
 <%- include('../partials/footer') %>
